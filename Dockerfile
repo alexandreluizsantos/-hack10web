@@ -1,6 +1,8 @@
 ##### Ambiente de Build
 FROM node:latest as react-build
 
+ARG BACKEND_URL="https://hack10-cloud-run-6korqtizza-uc.a.run.app/"
+
 WORKDIR /app
 COPY . ./
 
