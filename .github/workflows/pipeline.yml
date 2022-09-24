@@ -35,7 +35,7 @@ jobs:
           docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest --build-arg BACKEND_URL=${{ secrets.BACKEND_URL }} .
           docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest          
 
-DeployProd:
+  DeployProd:
     needs: Build
     runs-on: ubuntu-latest
     steps:
