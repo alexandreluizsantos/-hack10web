@@ -30,11 +30,6 @@ jobs:
       - name: Build Image & Push
         env: 
           ARTIFACT_REGISTRY_REPO: ${{ secrets.ARTIFACT_REGISTRY_REPO }}
-          CLOUD_SQL_USERNAME: ${{ secrets.CLOUD_SQL_USERNAME }}
-          CLOUD_SQL_PASSWORD: ${{ secrets.CLOUD_SQL_PASSWORD }}
-          CLOUD_SQL_DATABASE_NAME: ${{ secrets.CLOUD_SQL_DATABASE_NAME }}
-          DB_LOCAL_HOST: ${{ secrets.DB_LOCAL_HOST }}
-          CLOUD_SQL_CONNECTION_NAME: ${{ secrets.CLOUD_SQL_CONNECTION_NAME }}
         run: | 
           docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/myweb:latest .
           docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/myweb:latest               
