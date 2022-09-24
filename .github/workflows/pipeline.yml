@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: 12.x
 
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
       - name: Docker Login
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
