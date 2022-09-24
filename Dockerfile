@@ -1,6 +1,7 @@
 # build environment
 FROM node:14-alpine as react-build
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 COPY . ./
 RUN yarn
 RUN yarn build
