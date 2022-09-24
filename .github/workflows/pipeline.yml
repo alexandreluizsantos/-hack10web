@@ -42,14 +42,11 @@ jobs:
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-      - name: Deploy Frontend no  Cloud Run
-        id: deploy
-        run: |-
-          gcloud run deploy frontend \
-            --quiet \
-            --region  ${{ secrets.GOOGLE_REGION }} \
-            --image ${{ secrets.ARTIFACT_REGISTRY }}/web:latest \
-            --platform managed \
-            --allow-unauthenticated \
-            --project ${{ secrets.GOOGLE_PROJECT_ID }} \
-            --format json
+      - name: Deploy to Cloud
+        id: cloudrunweb
+        env: 
+          ARTIFACT_REGISTRY_REPO: ${{ secrets.ARTIFACT_REGISTRY_REPO }}
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'hack10-cloud-run'
+          image: ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest
