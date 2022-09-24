@@ -35,6 +35,13 @@ jobs:
           docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest --build-arg BACKEND_URL=${{ secrets.BACKEND_URL }} .
           docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest          
 
+      - name: Autenticação no Google Cloud
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
       - name: Deploy Frontend no  Cloud Run
         id: deploy
         run: |-
