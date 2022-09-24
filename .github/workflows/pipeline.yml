@@ -1,5 +1,5 @@
 # Nome do Workflow
-name: Hack10 Pipeline
+name: Hack10 Pipeline WEB
 
 # Evento que irá acionar a pipeline
 on: 
