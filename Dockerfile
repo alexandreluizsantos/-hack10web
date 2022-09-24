@@ -1,8 +1,6 @@
 ##### Ambiente de Build
 FROM node:latest as react-build
 
-ARG BACKEND_URL=url
-
 WORKDIR /app
 COPY . ./
 
