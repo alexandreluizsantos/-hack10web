@@ -34,3 +34,15 @@ jobs:
         run: | 
           docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest --build-arg BACKEND_URL=${{ secrets.BACKEND_URL }} .
           docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest          
+
+      - name: Deploy Frontend no  Cloud Run
+        id: deploy
+        run: |-
+          gcloud run deploy frontend \
+            --quiet \
+            --region  ${{ secrets.GOOGLE_REGION }} \
+            --image ${{ secrets.ARTIFACT_REGISTRY }}/web:latest \
+            --platform managed \
+            --allow-unauthenticated \
+            --project ${{ secrets.GOOGLE_PROJECT_ID }} \
+            --format json
