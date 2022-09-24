@@ -32,5 +32,5 @@ jobs:
           ARTIFACT_REGISTRY_REPO: ${{ secrets.ARTIFACT_REGISTRY_REPO }}
           BACKEND_URL: ${{ secrets.BACKEND_URL }}
           run: | 
-            docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/frontend:latest --build-arg BACKEND_URL=${{ secrets.BACKEND_URL }} .
-            docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/frontend:latest           
+            docker build -t ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest --build-arg BACKEND_URL=${{ secrets.BACKEND_URL }} .
+            docker push ${{ secrets.ARTIFACT_REGISTRY_REPO }}/web:latest           
